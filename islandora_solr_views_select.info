@@ -1,0 +1,11 @@
+name = Islandora Solr Views Select
+description = Makes Solr Views filter display values for a field in a select box.
+package = Islandora Search
+core = "7.x"
+php = 5.5
+version = 7.x-dev
+
+dependencies[] = islandora_solr
+dependencies[] = views
+
+files[] = handlers/islandora_solr_views_select_handler_filter.inc
