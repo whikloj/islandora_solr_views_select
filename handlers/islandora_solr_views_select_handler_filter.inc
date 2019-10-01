@@ -20,8 +20,8 @@ class islandora_solr_views_select_handler_filter extends islandora_solr_views_ha
     $form['value'] = array(
       '#type' => 'select',
       '#title' => check_plain($this->definition['title']),
-      '#default_value' => $this->value,
       '#options' => $options,
+      '#default_value' => $this->value,
     );
     if (!empty($form['operator'])) {
       $source = ($form['operator']['#type'] == 'radios') ? 'radio:options[operator]' : 'edit-options-operator';
@@ -39,6 +39,10 @@ class islandora_solr_views_select_handler_filter extends islandora_solr_views_ha
     }
     if (!empty($form_state['exposed']) && !isset($form_state['input'][$identifier])) {
       $form_state['input'][$identifier] = $this->value;
+    }
+
+    if (empty($form_state['input'][$identifier])) {
+      $form_state['input'][$identifier] = 'All';
     }
 
     if ($which == 'all') {
